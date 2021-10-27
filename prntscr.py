@@ -2,9 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import string
 import random
-import secrets
 import time
-import os
 path = "D:\chromedriver.exe"
 driver = webdriver.Chrome(path)
 print("Opening up the browser")
@@ -19,11 +17,15 @@ while True:
     print("Accessing this site: "+ site)
     driver.get(site)
     time.sleep(0.5)
-    print("Downloading file...")
+    print("Locating image...")
     time.sleep(2)
     filename = 'result'+rastgele+'.png'
-    x = driver.find_element_by_xpath('//*[@id="screenshot-image"]')
-    print(x)
-    with open(filename, 'wb') as file:
-        file.write(driver.find_element_by_xpath('//*[@id="screenshot-image"]').screenshot_as_png)
-        print("File successfully downloaded! File name : " + filename)
+    try:
+        x = driver.find_element_by_xpath('//*[@id="screenshot-image"]')
+        print("Downloading image...")
+        print(x)
+        with open(filename, 'wb') as file:
+            file.write(driver.find_element_by_xpath('//*[@id="screenshot-image"]').screenshot_as_png)
+            print("File successfully downloaded! File name : " + filename)
+    except:
+        print("Image not found, going to the next link")
