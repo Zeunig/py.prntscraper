@@ -5,7 +5,6 @@ import random
 import secrets
 import time
 import os
-# Neccessary things
 path = "D:\chromedriver.exe"
 driver = webdriver.Chrome(path)
 print("Opening up the browser")
@@ -22,7 +21,7 @@ while True:
     time.sleep(0.5)
     print("Downloading file...")
     time.sleep(2)
-    filename = 'result'+''.join(random.choices(string.ascii_lowercase + string.digits, k = 6))+'.png'
+    filename = 'result'+rastgele+'.png'
     x = driver.find_element_by_xpath('//*[@id="screenshot-image"]')
     print(x)
     with open(filename, 'wb') as file:
